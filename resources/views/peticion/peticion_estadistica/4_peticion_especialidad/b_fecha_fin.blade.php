@@ -1,0 +1,19 @@
+{{-- ELIMINAR-ARCHIVO --}}
+<!--recibidas-->
+<td>{{$recibidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->count()}}</td>
+<!--atendidas-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->count()}}</td>
+<!--pendiente-->
+<td>{{$pendientes->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->count()}}</td>
+<!--dictamen-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('documento_emitido','dictamen')->count()}}</td>
+<!--certificado-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('documento_emitido','certificado')->count()}}</td>
+<!--informe-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('documento_emitido','informe')->count()}}</td>
+<!--juzgado-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('documento_emitido','salida_juzgado')->count()}}</td>
+<!--archivo-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('documento_emitido','archivo')->count()}}</td>
+<!--estudios-->
+<td>{{$atendidas->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->sum('cantidad_estudios')}}</td>

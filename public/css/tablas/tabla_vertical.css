@@ -1,0 +1,18 @@
+.tabla-vertical{
+   font-size: 15px !important;
+ }
+ caption{
+   font-size: 25px;
+ }
+ .tabla-vertical th{
+   /* text-align: center !important; */
+   padding-left: 10px !important;
+   background-color: #394049;
+   color: #fff;
+   width: 50%;
+}
+.tabla-vertical td{
+    text-align: left;
+    padding-left: 10px !important;
+    background-color: #c6c6c6;
+}

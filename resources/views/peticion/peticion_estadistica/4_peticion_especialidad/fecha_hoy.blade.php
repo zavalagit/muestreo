@@ -1,0 +1,79 @@
+{{-- ELIMINAR-ARCHIVO --}}
+<!--recibidas-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))
+      ->where('created_at','>=',date('Y-m-d'). '00:00:00')->where('created_at','<=',date('Y-m-d'). '23:59:59')
+      ->count()
+   }}
+</td>
+<!--atendidas-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->count()
+   }}
+</td>
+<!--pendiente-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->where('estado','pendiente')
+      ->where('created_at','>=',date('Y-m-d').' 00:00:00')->where('created_at','<=',date('Y-m-d').' 23:59:59')
+      ->where('fecha_sistema','!=',date('Y-m-d'))
+      ->count()
+   }}
+</td>               
+<!--dictamen-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->where('documento_emitido','dictamen')
+      ->count()
+   }}
+</td>
+<!--certificado-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->where('documento_emitido','certificado')
+      ->count()
+   }}
+</td>
+<!--informe-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->where('documento_emitido','informe')
+      ->count()
+   }}
+</td>
+<!--juzgado-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->where('documento_emitido','salida_juzgado')
+      ->count()
+   }}
+</td>
+<!--archivo-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->where('documento_emitido','archivo')
+      ->count()
+   }}
+</td>
+<!--estudios-->
+<td>
+   {{
+      $peticiones->whereIn('solicitud_id',$especialidad->solicitudes->pluck('id'))->whereIn('estado',['atendida','entregada'])
+      ->where('fecha_sistema',date('Y-m-d'))
+      ->sum('cantidad_estudios')
+   }}
+</td>
