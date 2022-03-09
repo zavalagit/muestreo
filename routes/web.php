@@ -1248,7 +1248,7 @@ Route::get('baja-region',function(){
 });
 
 Route::get('promerdio',function(){
-   $indicios = App\Indicio::whereHas('cadena',function(){
+   $indicios = App\Indicio::whereHas('cadena',function($q){
                                  $q->where('estado','validada')
                                  ->where('fiscalia_id',4)
                                  ->whereHas('entrada',function(){
