@@ -1111,10 +1111,10 @@ Route::get('necro-actualizar-clasificacion',function(){
 
 
 
-
-
-
-
+#***************** PROYECTO DE MUESTREO PARA GENETICA****************************
+#MUESTRAS
+Route::get('muestra-form/{formAccion}/{muestra?}','Muestra\MuestraController@muestra_form')->name('muestra_form');
+//Route::get('peticion-form/{formAccion}/{peticion?}','Peticion2Controller@peticion_form')->name('peticion_form');
 
 
 
