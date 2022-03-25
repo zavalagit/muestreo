@@ -1115,8 +1115,11 @@ Route::get('necro-actualizar-clasificacion',function(){
 #MUESTRAS
 Route::get('muestra-form/{formAccion}/{muestra?}','Muestra\MuestraController@muestra_form')->name('muestra_form');
 //Route::get('peticion-form/{formAccion}/{peticion?}','Peticion2Controller@peticion_form')->name('peticion_form');
+//muestra la vista para iniciar el registro de la etapa codifcación
 Route::get('muestras-inicio','Muestra\MuestraController@muestra_entradas')->name('muestra_entradas');
 
+// form para el registro codificacion con multiple indicios; formAccion => 'codificacion'
+Route::get('codificacion-multipleindicios-form/{formAccion}/{cadenas}','Muestra\CodificacionController@codificacion_multipleindicios_form')->name('codificacion_multipleindicios_form');
 
 
 
