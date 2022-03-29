@@ -24,8 +24,14 @@ use App\Unidad;
 class CodificacionController extends Controller
 {
     #codificacion multiple indicios formulario 
-   public function codificacion_multipleindicios_form($formAccion, $cadenas){
+   public function codificacion_multipleindicios_form(Request $request, $formAccion, $cadenas){
+       //dd($cadenas);
+   
     $cadenas = explode( ',',str_replace(['[',']'],'',$cadenas) ); //cadenas llega como string ej: "[1,2,3,..,n-1,n]", hay que convertirlo a array pero primero hay que quitar los caracteres '[' y ']'
-    return view('muestreo.codificacion.codificacion_multipleindicios_formulario',['formAccion' => $formAccion,'cadenas' => Cadena::find($cadenas)]);
+    return view('muestreo.codificacion.codificacion_multipleindicios_formulario',[
+        'formAccion' => $formAccion,
+        'cadenas' => Cadena::find($cadenas),
+        'buscar_texto' => $request->buscar_texto,
+    ]);
  }
 }

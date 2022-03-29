@@ -19,10 +19,42 @@
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
-            <!--lic_autoriza-->
+            <!--FOLIO INTERNO-->
             <div class="input-field col s12 m12 l4">
                <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">AUTORIZA
+               <label for="prestamo-autoriza">FOLIO INTERNO
+                  <span class="asterisco-obligatorio">*</span>
+                  <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
+               </label>
+            </div>
+            <!--NOMBRE DE LA BITACORA-->
+            <div class="input-field col s12 m12 l4">
+               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="prestamo-autoriza">BITACORA
+                  <span class="asterisco-obligatorio">*</span>
+                  <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
+               </label>
+            </div>
+            <!--NUMERO DE LIBRO-->
+            <div class="input-field col s12 m12 l4">
+               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="prestamo-autoriza">NUMERO DE LIBRO
+                  <span class="asterisco-obligatorio">*</span>
+                  <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
+               </label>
+            </div>
+            <!--perito que registra-->
+            <div class="input-field col s12 m12 l6">
+               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="prestamo-autoriza">PERITO REGISTRA
+                  <span class="asterisco-obligatorio">*</span>
+                  <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
+               </label>
+            </div>
+            <!--supervisor-->
+            <div class="input-field col s12 m12 l6">
+               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="prestamo-autoriza">SUPERVISOR
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
@@ -31,7 +63,7 @@
       </fieldset>
    </div>
    
-   <div class="col s12 div-fieldset">
+   {{--  <div class="col s12 div-fieldset">
       <fieldset class="fieldset-subseccion">
          <legend>2.1. Responsable de bodega (Entrega)</legend>
          <div class="input-field col s1">
@@ -50,9 +82,9 @@
             </label>
          </div>
       </fieldset>
-   </div>
+   </div>  --}}
    
-   <div class="col s12 div-fieldset">
+   {{--  <div class="col s12 div-fieldset">
       <fieldset class="fieldset-subseccion">
          <legend>2.2. Resguardante (Recibe)</legend>
          <div class="input-field col s1">
@@ -71,7 +103,7 @@
             </label>
          </div>
       </fieldset>
-   </div>
+   </div>  --}}
 {{-- </div> --}}
 
 

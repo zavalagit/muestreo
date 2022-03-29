@@ -17,7 +17,7 @@
 @section('contenido')
 
 <div class="row">
-   <form class="col s12" id="form-prestamo" action="{{route('prestamo_save',['formAccion'=>$formAccion])}}" method="POST">
+   <form class="col s12" id="" action="" method="POST">
       {{ csrf_field() }}
       <input type="hidden" id="prestamo-tipo" name="prestamo_multiple" value="prestamo_multiple">
 
@@ -32,7 +32,8 @@
       @component('componentes.componente_carousel')
          <!--panel-1-->
          @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
-            @include('muestreo.codificacion.codificacion_multipleindicios_panel_1')
+         @include('muestreo.codificacion.indicios_buscador')
+         @include('muestreo.codificacion.codificacion_multipleindicios_panel_1')
          @endcomponent
          <!--panel-2-->
          @component('componentes.componente_carousel_panel',['previo' => true, 'siguiente' => false])
@@ -65,9 +66,21 @@
       })
    });
 </script>
+
+<script>
+   var texto = $('#buscar-texto').val();
+    if(texto != ''){
+      console.log('entro:' + texto);
+      $('td').mark(texto,{
+      "separateWordSearch": false,
+      });
+   }
+</script>
+
+
 {{-- <script src="{{asset('js/entrada/cadena_accion.js')}}" charset="utf-8"></script> --}}
 <script src="{{asset('js/modelo/get_modelo.js')}}"></script>
-<script src="{{asset('js/prestamo/prestamo_form.js')}}"></script>
+{{--  <script src="{{asset('js/prestamo/prestamo_form.js')}}"></script>  --}}
 
 
 
@@ -76,6 +89,6 @@
    <script src="{{asset('js/cadenas/cadena_select.js')}}"></script>
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
-
+   
 
 @endsection
