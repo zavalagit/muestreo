@@ -155,6 +155,7 @@ header{
 
       <!--menu responsable-->
       @if ( in_array(Auth::user()->tipo, ['administrador','responsable_bodega']) )
+        @include('plantilla.menu_muestreo')
         @include('plantilla.menu_responsable_bodega')
         @include('plantilla.menu_armas') 
       <!--menu usuario-->
