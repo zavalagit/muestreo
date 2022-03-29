@@ -11,7 +11,7 @@
 @section('titulo')
    FORMULARIO DE CODIFICACION
 @endsection
-@section('seccion', 'REGISTRAR CODIFICACION')
+@section('seccion', 'REGISTRAR CODIFICACION papirriquis')
 
 
 @section('contenido')
