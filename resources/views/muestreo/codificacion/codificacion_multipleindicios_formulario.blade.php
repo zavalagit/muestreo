@@ -17,9 +17,8 @@
 @section('contenido')
 
 <div class="row">
-   <form class="col s12" id="" action="" method="POST">
-      {{ csrf_field() }}
-      <input type="hidden" id="prestamo-tipo" name="prestamo_multiple" value="prestamo_multiple">
+   
+      {{--  <input type="hidden" id="prestamo-tipo" name="prestamo_multiple" value="prestamo_multiple">  --}}
 
 
       {{-- <div class="carousel carousel-slider center">
@@ -32,16 +31,22 @@
       @component('componentes.componente_carousel')
          <!--panel-1-->
          @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
+   <form class="col s12" autocomplete="off" id="form-codificacion-busqueda" action="{{route('codificacion_multipleindicios_form')}}">
+     
          @include('muestreo.codificacion.indicios_buscador')
+   </form>
+   <form class="col s12" id="form-codificacion-registro" action="{{route('codificacion_save',['formAccion'=>$formAccion])}}" method="POST">
+      {{ csrf_field() }}      
          @include('muestreo.codificacion.codificacion_multipleindicios_panel_1')
          @endcomponent
          <!--panel-2-->
          @component('componentes.componente_carousel_panel',['previo' => true, 'siguiente' => false])
             @include('muestreo.codificacion.codificacion_multipleindicios_panel_2')
          @endcomponent
+   </form>      
       @endcomponent
 
-   </form>
+   
 </div>
 
 
@@ -67,15 +72,7 @@
    });
 </script>
 
-<script>
-   var texto = $('#buscar-texto').val();
-    if(texto != ''){
-      console.log('entro:' + texto);
-      $('td').mark(texto,{
-      "separateWordSearch": false,
-      });
-   }
-</script>
+
 
 
 {{-- <script src="{{asset('js/entrada/cadena_accion.js')}}" charset="utf-8"></script> --}}
@@ -89,6 +86,7 @@
    <script src="{{asset('js/cadenas/cadena_select.js')}}"></script>
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
-   
+   {{--  para hacer la busqueda de indicios hacer el registro de codificacion  --}}
+   {{--  <script src="{{asset('js/codificacion/busqueda_indicio_codificacion.js')}}"></script>  --}}
 
 @endsection

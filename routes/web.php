@@ -1119,8 +1119,9 @@ Route::get('muestra-form/{formAccion}/{muestra?}','Muestra\MuestraController@mue
 Route::get('muestras-inicio','Muestra\MuestraController@muestra_entradas')->name('muestra_entradas');
 
 // form para el registro codificacion con multiple indicios; formAccion => 'codificacion'
-Route::get('codificacion-multipleindicios-form/{formAccion}/{cadenas}','Muestra\CodificacionController@codificacion_multipleindicios_form')->name('codificacion_multipleindicios_form');
+Route::get('codificacion-multipleindicios-form','Muestra\CodificacionController@codificacion_multipleindicios_form')->name('codificacion_multipleindicios_form');
 
+Route::post('codificacion_save/{formAccion}/{prestamo?}','Muestra\CodificacionController@codificacion_save')->name('codificacion_save');
 
 
 

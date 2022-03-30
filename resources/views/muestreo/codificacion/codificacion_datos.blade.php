@@ -5,7 +5,7 @@
          <!--hora prestamo-->
          <div class="row">
             <div class="input-field col s12 m6 l4">
-               <input type="time" class="{{isset($prestamo->id) ? '' : 'hora-actual'}}" id="hora" name="prestamo_hora" value="{{ isset($prestamo->id) ? date('H:i:s',strtotime($prestamo->prestamo_hora)) : '' }}">
+               <input form="form-codificacion-registro" type="time" class="{{isset($prestamo->id) ? '' : 'hora-actual'}}" id="hora" name="registro_hora" value="{{ isset($prestamo->id) ? date('H:i:s',strtotime($prestamo->prestamo_hora)) : '' }}">
                <label class="active" for="hora">HORA
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
@@ -13,48 +13,48 @@
             </div>
             <!--fecha prestamo-->
             <div class="input-field col s12 m6 l4">
-               <input type="date" class="{{isset($prestamo->id) ? '' : 'fecha-actual'}}" id="fecha" name="prestamo_fecha" value="{{ isset($prestamo->id) ? date('Y-m-d',strtotime($prestamo->prestamo_fecha)) : '' }}">
-               <label class="active" for="hora">FECHA
+               <input form="form-codificacion-registro" type="date" class="{{isset($prestamo->id) ? '' : 'fecha-actual'}}" id="fecha" name="registro_fecha" value="{{ isset($prestamo->id) ? date('Y-m-d',strtotime($prestamo->prestamo_fecha)) : '' }}">
+               <label class="active" for="fecha">FECHA
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
             <!--FOLIO INTERNO-->
             <div class="input-field col s12 m12 l4">
-               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">FOLIO INTERNO
+               <input form="form-codificacion-registro" id="folio_interno" type="text" name="folio_interno" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="folio_interno">FOLIO INTERNO
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
             <!--NOMBRE DE LA BITACORA-->
             <div class="input-field col s12 m12 l4">
-               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">BITACORA
+               <input form="form-codificacion-registro" id="nombre_bitacora" type="text" name="nombre_bitacora" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="nombre_bitacora">BITACORA
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
             <!--NUMERO DE LIBRO-->
             <div class="input-field col s12 m12 l4">
-               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">NUMERO DE LIBRO
+               <input form="form-codificacion-registro" id="numero_libro" type="text" name="numero_libro" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="numero_libro">NUMERO DE LIBRO
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
             <!--perito que registra-->
             <div class="input-field col s12 m12 l6">
-               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">PERITO REGISTRA
+               <input form="form-codificacion-registro" id="registra_perito" type="text" name="registra_perito" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="registra_perito">PERITO REGISTRA
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
             </div>
             <!--supervisor-->
             <div class="input-field col s12 m12 l6">
-               <input id="prestamo-autoriza" type="text" name="prestamo_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
-               <label for="prestamo-autoriza">SUPERVISOR
+               <input form="form-codificacion-registro" id="supervisor_autoriza" type="text" name="supervisor_autoriza" value="{{ isset($prestamo->id) ? $prestamo->prestamo_ordena : '' }}">
+               <label for="supervisor_autoriza">SUPERVISOR
                   <span class="asterisco-obligatorio">*</span>
                   <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>
                </label>
