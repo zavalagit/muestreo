@@ -18,16 +18,7 @@
 
 <div class="row">
    
-      {{--  <input type="hidden" id="prestamo-tipo" name="prestamo_multiple" value="prestamo_multiple">  --}}
-
-
-      {{-- <div class="carousel carousel-slider center">
-         <!--panel-1-->
-         @include('prestamo.prestamo_multiple_panel_1')
-         <!--panel-2-->
-         @include('prestamo.prestamo_multiple_panel_2')
-      </div> --}}
-
+      
       @component('componentes.componente_carousel')
          <!--panel-1-->
          @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
@@ -86,7 +77,7 @@
    <script src="{{asset('js/cadenas/cadena_select.js')}}"></script>
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
-   {{--  para hacer la busqueda de indicios hacer el registro de codificacion  --}}
-   {{--  <script src="{{asset('js/codificacion/busqueda_indicio_codificacion.js')}}"></script>  --}}
+   {{--  datos para busqueda de indicios multiples --}}
+   <script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>
 
 @endsection
