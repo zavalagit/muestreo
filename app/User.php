@@ -16,7 +16,7 @@ class User extends Authenticatable
     * @var array
     */
 
-   protected $table = 'bodega.users';
+   protected $table = 'dbo.users';
    protected $fillable = [
       'folio', 'name', 'tipo', 'password', 'institucion_id','fiscalia_id','unidad_id','cargo_id'
    ];

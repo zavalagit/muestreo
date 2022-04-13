@@ -48,6 +48,10 @@ Route::get('cadena-form/{formAccion}/{cadena?}','CadenaController@cadena_form')-
 Route::post('cadena-save/{formAccion}/{cadena?}','CadenaController@cadena_save')->name('cadena_save')->middleware('auth');
 
 
+Route::get('muestreos/create/{formAccion}','MuestreoController@create')->name('muestreos.create');
+Route::post('muestreos','MuestreoController@store')->name('muestreos.store');
+
+
 //Get_Tablas
    Route::post('get-especialidades','GetTablasController@get_especialidades');
    // Route::post('get-unidades','GetTablasController@get_unidades');

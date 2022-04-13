@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unidad extends Model
 {
-   protected $table = 'bodega.unidades';
+   protected $table = 'dbo.unidades';
 
    protected $fillable = ['nombre'];
 

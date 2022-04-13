@@ -8,8 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'UpdateHelper\\' => array($vendorDir . '/kylekatarnls/update-helper/src'),
     'SimpleSoftwareIO\\QrCode\\' => array($vendorDir . '/simplesoftwareio/simple-qrcode/src'),
-    'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'BaconQrCode' => array($vendorDir . '/bacon/bacon-qr-code/src'),
 );

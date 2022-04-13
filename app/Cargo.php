@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model
 {
-   protected $table = 'bodega.cargos';
+   protected $table = 'dbo.cargos';
 
    protected $fillable = ['nombre'];
 
