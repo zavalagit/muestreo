@@ -67,8 +67,8 @@
 
 
 {{-- <script src="{{asset('js/entrada/cadena_accion.js')}}" charset="utf-8"></script> --}}
-<script src="{{asset('js/modelo/get_modelo.js')}}"></script>
-{{--  <script src="{{asset('js/prestamo/prestamo_form.js')}}"></script>  --}}
+<script src="{{asset('js/codificacion/get_modelo.js')}}"></script>
+<script src="{{asset('js/codificacion/codificacion_form.js')}}"></script>
 
 
 
@@ -78,6 +78,6 @@
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
    {{--  datos para busqueda de indicios multiples --}}
-   <script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>
+   {{--  <script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>  --}}
 
 @endsection

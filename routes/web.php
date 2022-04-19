@@ -84,7 +84,7 @@ Route::post('cadena-save/{formAccion}/{cadena?}','CadenaController@cadena_save')
       Route::get('anexo-4/{id_cadena}','PDF\AnexosController@anexo4');
       //Etiqueta
       Route::get('etiqueta/{tipo}/{id}','PDFController@etiquetapdf');
-      Route::get('etiqueta-pdf/{id_cadena}','EtiquetaContrxoller@etiqueta_pdf');
+      //Route::get('etiqueta-pdf/{id_cadena}','EtiquetaContrxoller@etiqueta_pdf');
 
       //Etiqueta por indicio
       Route::get('etiqueta_id/{id}','PDFController@etiqueta_id_pdf');
@@ -639,7 +639,7 @@ Route::get('fiscalia-cambiar/{cadena_id}','CadenaController@fiscalia_cambiar');
 Route::post('fiscalia-cambiar-guardar','CadenaController@fiscalia_cambiar_guardar');
 
 
-Route::get('resguardo-temporal-cadena-buscar','ResguardoTemporalController@resguardo_temporal_cadena_buscar');
+//Route::get('resguardo-temporal-cadena-buscar','ResguardoTemporalController@resguardo_temporal_cadena_buscar');
 
 
 Route::get('cantidad-estudios',function(){
@@ -1121,9 +1121,9 @@ Route::get('muestras-inicio','Muestra\MuestraController@muestra_entradas')->name
 // form para el registro codificacion con multiple indicios; formAccion => 'codificacion'
 Route::get('codificacion-multipleindicios-form','Muestra\CodificacionController@codificacion_multipleindicios_form')->name('codificacion_multipleindicios_form');
 
-Route::post('codificacion_save/{formAccion}/{prestamo?}','Muestra\CodificacionController@codificacion_save')->name('codificacion_save');
+Route::post('codificacion_save/{formAccion}/{codificacion?}','Muestra\CodificacionController@codificacion_save')->name('codificacion_save');
 
-
+// Route::post('prestamo-save/{formAccion}/{prestamo?}','PrestamoController@prestamo_save')->name('prestamo_save');
 
 
 
