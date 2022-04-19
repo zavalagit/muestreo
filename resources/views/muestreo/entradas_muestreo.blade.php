@@ -38,7 +38,7 @@
 <!--section - main-->
 @section('main')
    @component('componentes.componente_consultar_acciones')
-   <a href="{{route('codificacion_multipleindicios_form')}}" target="_blank">
+   <a href="{{route('codificacion.create')}}" target="_blank">
       <i style="color: #152f4a;" class="fas fa-caret-right fa-lg"></i> <i style="color: #152f4a;" class="fas fa-caret-right fa-lg"></i> <span>NUEVO REGISTRO</span>
    </a>
    {{-- <a href="{{route('prestamo_multiple_prueba',['prestamos' => json_encode( $prestamos->pluck('id') )])}}" target="_blank">

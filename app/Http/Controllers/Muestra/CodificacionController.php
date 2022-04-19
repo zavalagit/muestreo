@@ -48,7 +48,7 @@ class CodificacionController extends Controller
    }
 
     #codificacion multiple indicios formulario 
-   public function codificacion_multipleindicios_form(Request $request){
+   public function create(Request $request){
        $formAccion = 'registrar';
     //dd($request->filled('nucs'));
        set_time_limit(0);
@@ -84,10 +84,11 @@ class CodificacionController extends Controller
  }
 
  #prestamo, reingreso multiples save
-      public function codificacion_save(CodificacionRequest $request, $formAccion, Codificacion $codificacion){
+      public function store(CodificacionRequest $request){
          //dd($request->all());
+         $formAccion = 'registrar';
          $this->set_formAccion($formAccion);
-         $this->set_codificacion($codificacion);
+         //$this->set_codificacion($codificacion);
          //formAccion -> registrar
          if( $formAccion == 'registrar' ){
             DB::transaction(function () use($request) {
@@ -99,8 +100,8 @@ class CodificacionController extends Controller
          return response()->json([
             'status' => true,
             'formAccion' => $formAccion,
-            'codificacion' => $this->codificacion,
-            'registro_multiple' => $request->has('registro_multiple') ? true : false,
+            // 'codificacion' => $this->codificacion,
+            // 'registro_multiple' => $request->has('registro_multiple') ? true : false,
             'array_codificacion_id' => $this->array_codificacion_id,
          ]);
       }

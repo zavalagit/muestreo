@@ -62,7 +62,7 @@ class MuestraController extends Controller
         }      
     }
     
-    public function muestra_entradas(Request $request){
+    public function index(Request $request){
 
         //dd(request()->route());
         set_time_limit(0);

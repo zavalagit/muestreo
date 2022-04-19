@@ -22,11 +22,11 @@
       @component('componentes.componente_carousel')
          <!--panel-1-->
          @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
-   <form class="col s12" autocomplete="off" id="form-codificacion-busqueda" action="{{route('codificacion_multipleindicios_form')}}">
+   <form class="col s12" autocomplete="off" id="form-codificacion-busqueda" action="{{route('codificacion.create')}}">
      
          @include('muestreo.codificacion.indicios_buscador')
    </form>
-   <form class="col s12" id="form-codificacion-registro" action="{{route('codificacion_save',['formAccion'=>$formAccion])}}" method="POST">
+   <form class="col s12" id="form-codificacion-registro" action="{{route('codificacion.store')}}" method="POST">
       {{ csrf_field() }}      
          @include('muestreo.codificacion.codificacion_multipleindicios_panel_1')
          @endcomponent
@@ -69,7 +69,8 @@
 {{-- <script src="{{asset('js/entrada/cadena_accion.js')}}" charset="utf-8"></script> --}}
 <script src="{{asset('js/codificacion/get_modelo.js')}}"></script>
 <script src="{{asset('js/codificacion/codificacion_form.js')}}"></script>
-
+{{--agrega campo de nuc para su busqueda --}}
+<script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>
 
 
    
@@ -77,7 +78,6 @@
    <script src="{{asset('js/cadenas/cadena_select.js')}}"></script>
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
-   {{--  datos para busqueda de indicios multiples --}}
-   {{--  <script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>  --}}
+   
 
 @endsection
