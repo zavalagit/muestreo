@@ -24,10 +24,7 @@ class CrearTablaCodificaciones extends Migration
             $table->bigInteger('supervisor_id')->unsigned();
             $table->foreign('supervisor_id')->references('id')->on('bodega.users');
 
-             //id de la cadena
-             $table->bigInteger('cadena_id')->unsigned()->nullable();//id de la cadena para hacer busquedas por folio
-             $table->foreign('cadena_id')->references('id')->on('bodega.cadenas');
-                        
+                                    
             //nombre de la bitacora
             $table->string('bitacora')->nullable();
             

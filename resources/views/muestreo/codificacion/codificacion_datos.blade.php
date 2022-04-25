@@ -68,8 +68,8 @@
          <legend>2.2.Supervisor (Autoriza)</legend>
         
          <div class="input-field col s11">
-            <input type="hidden" id="supervisor_autoriza" name="supervisor_autoriza" value="{{ isset($codificacion->id) ? $codificacion->supervisor_id : '' }}">
-            <input type="text" class="autocomplete" id="supervisor-autoriza-autocomplete" data-tabla="users" data-input-hidden="supervisor_autoriza" value="{{ isset($codificacion->id) ? "{$codificacion->supervisor->folio} - {$codificacion->supervisor->name}" : '' }}">
+            <input autocomplete="off" type="hidden" id="supervisor_autoriza" name="supervisor_autoriza" value="{{ isset($codificacion->id) ? $codificacion->supervisor_id : '' }}">
+            <input autocomplete="off" type="text" class="autocomplete" id="supervisor-autoriza-autocomplete" data-tabla="users" data-input-hidden="supervisor_autoriza" value="{{ isset($codificacion->id) ? "{$codificacion->supervisor->folio} - {$codificacion->supervisor->name}" : '' }}">
             <label for="prestamo-resguardante-autocomplete">Ingrese Nombre o Folio
                <span class="asterisco-obligatorio">*</span>
                <span class="asterisco-editar {{$formAccion == 'editar' ? '' : 'ocultar'}}">*</span>

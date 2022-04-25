@@ -71,11 +71,12 @@
 <script src="{{asset('js/codificacion/codificacion_form.js')}}"></script>
 {{--agrega campo de nuc para su busqueda --}}
 <script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>
-
+{{--selecionar el checkbox del indicio --}}
+<script src="{{asset('js/codificacion/select_checkbox.js')}}"></script>
 
    
    {{-- <script src="{{asset('js/cadenas/cadena_estado.js')}}"></script> --}}
-   <script src="{{asset('js/cadenas/cadena_select.js')}}"></script>
+  
    <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
 
    

@@ -31,7 +31,7 @@ class CodificacionRequest extends FormRequest
     public function rules()
     {
         $this->set_rules();
-        if ( $this->route('formAccion') == 'registrar' ) return $this->reglas['registrar'];
+        if ( $this->route('codificacion') == NULL ) return $this->reglas['registrar'];
         // if ( $this->route('formAccion') == 'reingresar' ) return $this->request->has('reingreso_multiple') ? $this->reglas['reingreso'] : array_collapse( $this->reglas );
         // if ( $this->route('formAccion') == 'editar' ) {
         //     $prestamo = $this->route('prestamo');
@@ -43,8 +43,8 @@ class CodificacionRequest extends FormRequest
     public function set_rules(){
         $this->reglas = [
             'registrar' => [
-                'indicios' => $this->route('formAccion') == 'registrar' ? 'required_without:cadenas' : '',
-                'cadenas' => $this->route('formAccion') == 'registrar' ? 'required_without:indicios' : '',
+                'indicios' => $this->route('codificacion') == NULL ? 'required_without:cadenas' : '',
+                'cadenas' => $this->route('codifcacaion') == NULL ? 'required_without:indicios' : '',
                 'codificacion_hora' => 'required',
                 'codificacion_fecha' => 'required|date|before_or_equal:today',
                 'folio_interno' => 'required',

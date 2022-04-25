@@ -11,7 +11,6 @@ class Codificacion extends Model
     protected $fillable = [
         'perito_id', //perito que realiza el registro
         'supervisor_id', //supermisor que autoriza su registro
-        'cadena_id', //id de la cadena que pertenece el indicio
         'bitacora', //nombre de libro de bitacora
         'numero_libro', //numero del libro de bitacoras
         'folio_interno', //folio interno para el registro

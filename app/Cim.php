@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cim extends Model
 {
+    protected $table = 'bodega.cims';
+
     protected $fillable = [
         'user_id', //usuario que realiza el registro
         'indicio_id', //id del indicio para relacionar cim

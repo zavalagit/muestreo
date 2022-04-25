@@ -25,6 +25,9 @@ class CodificacionController extends Controller
    public $cadena;
    public $cim;
    public $array_codificacion_id = [];
+   public $data;
+   public $actual;
+   public $c;
 
    public function __construct(){
       setlocale(LC_TIME,"es_MX.UTF-8");
@@ -88,6 +91,8 @@ class CodificacionController extends Controller
          //dd($request->all());
          $formAccion = 'registrar';
          $this->set_formAccion($formAccion);
+         
+        
          //$this->set_codificacion($codificacion);
          //formAccion -> registrar
          if( $formAccion == 'registrar' ){
@@ -100,28 +105,20 @@ class CodificacionController extends Controller
          return response()->json([
             'status' => true,
             'formAccion' => $formAccion,
-            // 'codificacion' => $this->codificacion,
-            // 'registro_multiple' => $request->has('registro_multiple') ? true : false,
+            'codificacion' => $this->codificacion,
+            'registro_multiple' => $request->has('registro_multiple') ? true : false,
             'array_codificacion_id' => $this->array_codificacion_id,
          ]);
       }
 
       public function set_registro_modelo(Request $request){
-         if ( $request->filled('cadenas') ) {
-            foreach (Cadena::find($request->cadenas) as $key => $cadena) {
-               $this->codificacion = new Codificacion;
-               $this->set_cadena($cadena);
-               $this->set_registro_atributos($request); //se relailiza el prestamo por cadena
-               $this->set_registro_indicios($cadena->indicios);
-               $this->array_codificacion_id[] = $this->codificacion->id;
-            }
-         }
+         
          if ( $request->filled('indicios') ) {
             $gruposIndicios = Indicio::find($request->indicios)->groupBy('cadena_id'); //separando los indicios en grupos de acuerdo a la cadena que pertenecen         
+            $this->codificacion = new Codificacion;
+            $this->set_registro_atributos($request); //se realiza el registro en tabla codificacion
             foreach ($gruposIndicios as $cadena_id => $grupoIndicios) { //iterando cada grupo
-               $this->codificacion = new Codificacion;
                $this->set_cadena(Cadena::find($cadena_id));
-               $this->set_registro_atributos($request); //se relailiza el prestamo por grupo de cadena
                $this->set_registro_indicios($grupoIndicios);            
                $this->array_codificacion_id[] = $this->codificacion->id;
             }
@@ -129,33 +126,34 @@ class CodificacionController extends Controller
       }
 
       public function set_registro_atributos(Request $request){      
-         $this->codificacion->bitacora = $request->prestamo_autoriza;
-         $this->codificacion->numero_libro = $request->prestamo_autoriza;
-         $this->codificacion->folio_interno = $request->prestamo_autoriza;
-         $this->codificacion->hora_inicio = $request->prestamo_hora;
-         $this->codificacion->fecha_inicio = $request->prestamo_fecha;
+         $this->codificacion->bitacora = $request->nombre_bitacora;
+         $this->codificacion->numero_libro = $request->numero_libro;
+         $this->codificacion->folio_interno = $request->folio_interno;
+         $this->codificacion->hora_inicio = $request->codificacion_hora;
+         $this->codificacion->fecha_inicio = $request->codificacion_fecha;
          $this->codificacion->observaciones = $request->observaciones;
          // if( $this->formAccion == 'prestar' ) = isset($cadena->id) ? $cadena->indicios->sum('indicio_cantidad_disponible') : null;
          //******if( $this->formAccion == 'registro' ) $this->codificacion->prestamo_numindicios = 0;
-         $this->codificacion->perito_id = $request->prestamo_resguardante; //prestamo recibe (Resguardante)
-         $this->codificacion->supervisor_id = $request->prestamo_responsable_bodega; //prestamo entrega (Responsable de bodega)
+         $this->codificacion->perito_id = $request->registra_perito; //prestamo recibe (Resguardante)
+         $this->codificacion->supervisor_id = $request->supervisor_autoriza; //prestamo entrega (Responsable de bodega)
          // if( $cadena->id ) $this->prestamo->cadena_id = $cadena->id;
-         if( $this->formAccion == 'registro' ) $this->codificacion->cadena_id = $this->cadena->id;
-         //$this->codificacion->save();
+         //$this->codificacion->cadena_id = $this->cadena->id;
+         $this->codificacion->save();
       }
       public function set_registro_indicios($indicios){
          foreach ($indicios as $key => $indicio) {               
             $this->codificacion->indicios()->attach($indicio,[ //relacion codificacion-indicios
-               'codificacion_cantidad_indicios' => $indicio->indicio_cantidad_disponible,
-               'descripcion' => isset($indicio->indicio_descripcion_disponible) ? $indicio->indicio_descripcion_disponible : null, 
+               'cadena_id' => $indicio->cadena_id, //guardamos cadena id
+               'codificacion_cantidad_indicios' => $indicio->indicio_cantidad_disponible, //guardamos cantidad de indicios
+               'descripcion' => isset($indicio->indicio_descripcion_disponible) ? $indicio->indicio_descripcion_disponible : $indicio->descripcion, //guardamos descripcion
             ]);
             $this->cim = new Cim;
             $this->cim->user_id = Auth::user()->id;
             $this->cim->indicio_id = $indicio->id;
-
             $data = Cim::latest('id')->first();
             $actual =  date("Y");
-            $c = $data->id + 1;
+            $c = isset($data->id) ? $data->id + 1 : 0 + 1;
+            
             $this->cim->codigo = "{$c}/{$actual}";
             $this->cim->save(); //guardamos en tabla cim
             

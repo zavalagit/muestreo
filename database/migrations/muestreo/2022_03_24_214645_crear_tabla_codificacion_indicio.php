@@ -24,6 +24,10 @@ class CrearTablaCodificacionIndicio extends Migration
             $table->bigInteger('indicio_id')->unsigned();
             $table->foreign('indicio_id')->references('id')->on('bodega.indicios');
 
+            //id de la cadena
+            $table->bigInteger('cadena_id')->unsigned();//id de la cadena para hacer busquedas por folio
+            $table->foreign('cadena_id')->references('id')->on('bodega.cadenas');
+
             //cantidad de indicios
             $table->bigInteger('codificacion_cantidad_indicios')->unsigned()->nullable();
 

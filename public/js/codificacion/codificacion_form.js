@@ -3,15 +3,17 @@ $(function(){
    $(document.body).on('submit','#form-codificacion-registro',function(e){
       e.preventDefault();
       //console.log($(this).attr('action'));
+      //console.log('hla');
 
       $.ajax({
          type: $(this).attr('method'),
          url: $(this).attr('action'),
          data: $(this).serialize(),
          success: function(respuesta){
-            console.log(respuesta.status);
+            //console.log(respuesta);
+            console.log(respuesta.array_codificacion_id);
 
-            if(respuesta.status){
+            //if(respuesta.status){
                // if (respuesta.formAccion == 'prestar') {
                //    $('#btn-prestar').parent().addClass('ocultar');
                //    // $('#btn-realizar-reingreso').attr('href',route('prestamo_form',{formAccion:'reingresar',cadena:$('#btn-realizar-reingreso').attr('data-cadena-id'),prestamo:respuesta.prestamo.id}));
@@ -45,11 +47,11 @@ $(function(){
                
 
                // $('.indicio-checkbox').prop('disabled',true);
-            }
-            else{
-               console.log('algo anda mal');
-               console.log(prestamo.prestamo_pdf);
-            }
+            // }
+            // else{
+            //    console.log('algo anda mal');
+            //    console.log(prestamo.prestamo_pdf);
+            //}
          },
          error: function(respuesta){
             console.log(respuesta);
