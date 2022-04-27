@@ -160,5 +160,71 @@ class CodificacionController extends Controller
          }
       }
 
+#mostar lista de registros de codificacion
+         public function index(Request $request){
+            if ( $request->has('btn_buscar') ) {
+               // dd('entra');
+               $prestamos = Prestamo::whereHas('cadena',function($q) use($request){
+                                       // $q->where('fiscalia_id',Auth::user()->fiscalia_id);
+                                       if( $request->filled('buscar_region') ){
+                                          $q->where('fiscalia_id',$request->buscar_region);
+                                       }
+                                       else{
+                                          if(Auth::user()->tipo != 'administrador')
+                                             $q->where('fiscalia_id',Auth::user()->fiscalia_id);
+                                       }
+                                    })
+                                    ->where(function($q) use($request){
+                                       #prestamo_estado
+                                       if($request->buscar_prestamo_estado != 'todo'){
+                                          $q->where('estado',$request->buscar_prestamo_estado);
+                                       }
+                                       #prestamo_fecha_inicio
+                                       if ( $request->filled('buscar_fecha_inicio') ) {
+                                             if($request->filled('buscar_fecha_fin'))
+                                                $q->where(function($a) use($request){
+                                                   $a->whereBetween('prestamo_fecha',[$request->buscar_fecha_inicio,$request->buscar_fecha_fin])
+                                                   ->orWhereBetween('reingreso_fecha',[$request->buscar_fecha_inicio,$request->buscar_fecha_fin]);
+                                                });
+                                             else
+                                                $q->where(function($a) use($request){
+                                                   $a->where('prestamo_fecha',$request->buscar_fecha_inicio)
+                                                   ->orWhere('reingreso_fecha',$request->buscar_fecha_inicio);
+                                                });
+                                       }
+                                       #prestamo_fecha_fin
+                                       if ( $request->filled('buscar_texto') ) {
+                                          $q->where(function($a) use($request){
+                                             $a->whereHas('cadena',function($b) use($request){
+                                                $b->where('folio_bodega','like',"%{$request->buscar_texto}%")
+                                                ->orWhere('nuc','like',"%{$request->buscar_texto}%");
+                                             })
+                                             ->orWhereHas('perito1',function($b) use($request){
+                                                $b->where('nombre','like',"%{$request->buscar_texto}%");
+                                             })
+                                             ->orWhereHas('perito2',function($b) use($request){
+                                                $b->where('nombre','like',"%{$request->buscar_texto}%");
+                                             });
+                                          });
+                                       }
+                                       #prestamo_resguardante
+                                       if($request->filled('resguardante')){
+                                          $q->where('perito1_id',$request->resguardante);
+                                       }
+                                    })
+                                    ->orderBy('prestamo_fecha')
+                                    ->get();
+            }
+            $request->flash();
+            $codificaciones = Codificacion::latest('id')->get();
+            //dd($codificacion);
+            return view('muestreo.codificacion.listado_codificacion',[
+               'prestamos' => isset($prestamos) ? $prestamos : null,
+               'codificaciones' => $codificaciones,
+               'regiones' => Fiscalia::all(),
+            ]);
+
+         }
+
  
 }
