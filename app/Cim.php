@@ -11,7 +11,7 @@ class Cim extends Model
     protected $fillable = [
         'user_id', //usuario que realiza el registro
         'indicio_id', //id del indicio para relacionar cim
-        'codigo' //numero denominado cim numero consecutivo/año de registro
+        
         
     ];
 

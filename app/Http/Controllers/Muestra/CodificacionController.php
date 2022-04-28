@@ -141,23 +141,41 @@ class CodificacionController extends Controller
          $this->codificacion->save();
       }
       public function set_registro_indicios($indicios){
-         foreach ($indicios as $key => $indicio) {               
+            $actual =  date("Y");
+            $cim = Cim::where('year', $actual)->first();
+            if (isset($cim)) {
+               
+               $ultimo_cim = $cim->cim;
+               
+            }else{
+               $cim = new Cim;
+               $ultimo_cim = 0;
+            }
+            //$ultimo_cim = isset($cim) ? $cim->cim : 0;
+            
+         foreach ($indicios as $key => $indicio) {
+            $ultimo_cim++;          
             $this->codificacion->indicios()->attach($indicio,[ //relacion codificacion-indicios
                'cadena_id' => $indicio->cadena_id, //guardamos cadena id
                'codificacion_cantidad_indicios' => $indicio->indicio_cantidad_disponible, //guardamos cantidad de indicios
                'descripcion' => isset($indicio->indicio_descripcion_disponible) ? $indicio->indicio_descripcion_disponible : $indicio->descripcion, //guardamos descripcion
             ]);
-            $this->cim = new Cim;
-            $this->cim->user_id = Auth::user()->id;
-            $this->cim->indicio_id = $indicio->id;
-            $data = Cim::latest('id')->first();
-            $actual =  date("Y");
-            $c = isset($data->id) ? $data->id + 1 : 0 + 1;
-            
-            $this->cim->codigo = "{$c}/{$actual}";
-            $this->cim->save(); //guardamos en tabla cim
-            
+            //update cim del indicio
+            $indicio->cim = "{$ultimo_cim}/{$actual}";
+            $indicio->seleccionar = 0;
+            $indicio->save();
+          
          }
+         //$cim = new Cim;
+         $cim->year = $actual;
+         $cim->cim = $ultimo_cim;
+         $cim->user_id = Auth::user()->id;
+         $cim->indicio_id = $indicio->id;
+
+         $cim->save();
+         
+
+
       }
 
 #mostar lista de registros de codificacion
