@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Muestreo;
+use Auth;
+use App\Kit;
+use App\PCR;
+use App\Termociclador;
 
-class MuestreoController extends Controller
+class PCRController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +28,10 @@ class MuestreoController extends Controller
      */
     public function create()
     {
-        return view('muestreo.create');
+        return view('pcr.create',[
+            'kits' => Kit::all(),
+            'termocicladores' => Termociclador::all(),
+        ]);
     }
 
     /**
@@ -36,11 +41,11 @@ class MuestreoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $muestreo = Muestreo::create($request->all());
-        $muestreo->user1_id = Auth::id();
-        $muestreo->save();
-        return $muestreo;
+    {   
+        // return $request->all();
+        $pcr = PCR::create($request->all());
+        // $pcr->user_id = Auth::id();
+        // $pcr->save();
     }
 
     /**

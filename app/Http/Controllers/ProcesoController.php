@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Muestreo;
+use App\Proceso;
 
-class MuestreoController extends Controller
+class ProcesoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +25,7 @@ class MuestreoController extends Controller
      */
     public function create()
     {
-        return view('muestreo.create');
+        return view('proceso.create');
     }
 
     /**
@@ -37,10 +36,8 @@ class MuestreoController extends Controller
      */
     public function store(Request $request)
     {
-        $muestreo = Muestreo::create($request->all());
-        $muestreo->user1_id = Auth::id();
-        $muestreo->save();
-        return $muestreo;
+        $proceso = Proceso::create($request->all());
+        return $proceso;
     }
 
     /**

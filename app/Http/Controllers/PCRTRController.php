@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Muestreo;
+use Auth;
+use App\Equipo;
+use App\PCRTR;
 
-class MuestreoController extends Controller
+class PCRTRController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,9 @@ class MuestreoController extends Controller
      */
     public function create()
     {
-        return view('muestreo.create');
+        return view('pcrtr.create',[
+            'equipos' => Equipo::all(),
+        ]);
     }
 
     /**
@@ -37,10 +40,10 @@ class MuestreoController extends Controller
      */
     public function store(Request $request)
     {
-        $muestreo = Muestreo::create($request->all());
-        $muestreo->user1_id = Auth::id();
-        $muestreo->save();
-        return $muestreo;
+        // return $request->all();
+        $pcr = PCRTR::create($request->all());
+        $pcr->user_id = Auth::id();
+        $pcr->save();
     }
 
     /**
