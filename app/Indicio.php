@@ -6,25 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Indicio extends Model
 {
-   protected $table = 'bodega.indicios';
+   protected $table = 'indicios';
 
-   protected $fillable = [
-      'identificador',
-      'descripcion',
-      'indicio_ubicacion_lugar',
-      'recolectado_de',//Modificación Química
-      'hora',
-      'fecha',
-      'recoleccion',
-      'embalaje',
-      'numero_indicios', //se registra en Entradas
-      'condicion',
-      'observacion',
-      'estado',
-      'resguardo',
-      'cadena_id',      
-      'baja_id',
-   ];
+   protected $guarded = ['estado','cadena_id'];
 
    public function cadena(){
       return $this->belongsTo('App\Cadena');

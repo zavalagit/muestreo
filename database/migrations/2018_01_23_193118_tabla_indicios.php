@@ -16,16 +16,15 @@ class TablaIndicios extends Migration
         Schema::create('indicios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('identificador');
+            $table->integer('cantidad')->nullable();
+            $table->integer('cantidad_disponible')->nullable();
             $table->longText('descripcion');
             $table->string('embalaje');
             $table->longText('observaciones')->nullable();
-            $table->integer('cantidad')->nullable();
-            $table->integer('cantidad_disponible')->nullable();
             $table->enum('estado',['activo','prestamo','baja','activo_prestamo','activo_baja','prestamo_baja'])->default('activo');
-            // $table->boolean('es_arma')->nullable();
+            #cadena_id
             $table->bigInteger('cadena_id')->unsigned()->nullable();
-            $table->foreign('cadena_id')
-               ->references('id')->on('cadenas');
+            $table->foreign('cadena_id')->references('id')->on('cadenas');
 
 
             //Lugar de resguardo del indicio que no sea un lugar, charola o caja

@@ -32,20 +32,15 @@ class TablaCadenas extends Migration
             $table->string('traslado_otros')->nullable();
             
             
-            //key foranea unidades
+            #municipio_id
             $table->bigInteger('municipio_id')->unsigned()->nullable();
-            $table->foreign('municipio_id')
-               ->references('id')->on('municipios');
-
-            //key foranea unidades
+            $table->foreign('municipio_id')->references('id')->on('municipios');
+            //unidad_id
             $table->bigInteger('unidad_id')->unsigned()->nullable();
-            $table->foreign('unidad_id')
-               ->references('id')->on('unidades');
+            $table->foreign('unidad_id')->references('id')->on('unidades');
 
-               $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')
-               ->references('id')->on('users')
-               ->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');               
                
             // $table->string('folio_bodega')/*->unique()*/->nullable(); //unique desde valitation
             // $table->string('folio')->nullable();

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class IndicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +35,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $indicio = Indicio::create($request->all());
+        $indicio->cantidad_disponible = $indicio->cantidad;
+        $indicio->cadena_id = $cadena->id;
+        $indicio->save();
     }
 
     /**
@@ -83,35 +85,4 @@ class UserController extends Controller
     {
         //
     }
-
-    public function get_users(Request $request){
-		/*
-			--El request debe tener:
-				*folio o name (requerido)
-				*tipo de user (opcional)
-		*/
-		$users = User::where(function($q) use($request){
-								$q->where('folio','like',"%{$request->buscar}%")
-									->orWhere('name','like',"%{$request->buscar}%");
-								//user_tipo
-								if ( $request->filled('user_tipo') ) {
-									$q->where('tipo',$request->user_tipo);
-								}
-								//user_fiscalia
-								if ( $request->filled('user_fiscalia') ) {
-									$q->where('fiscalia_id',$request->user_fiscalia);
-								}
-								if ( $request->filled('user_unidad') ) {
-									$q->where('unidad_id',$request->user_unidad);
-								}
-							})
-							->take(5)
-							->with('institucion')
-							->with('cargo')
-							->get();
-
-		return response()->json([
-			'registros' => $users,
-		]);
-	}
 }

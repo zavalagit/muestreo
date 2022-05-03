@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Institucion extends Model
 {
-	protected $table = 'bodega.instituciones';
-
+	protected $table = 'instituciones';
    	protected $fillable = ['nombre'];
 
    	public function users(){

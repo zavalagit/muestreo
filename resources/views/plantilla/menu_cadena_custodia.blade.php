@@ -11,12 +11,12 @@
          
          <div class="menu-body collapsible-body">
             <ul>
-               <li class="{{request()->route()->named('cadena_form') ? 'item-selected' : ''}}">
-                  <a href="{{route('cadena_form',['formAccion' => 'registrar'])}}" class=""><i class="fas fa-edit"></i><span>REGISTRAR</span></a>
+               <li class="{{request()->route()->named('cadenas.create') ? 'item-selected' : ''}}">
+                  <a href="{{route('cadenas.create')}}" class=""><i class="fas fa-edit"></i><span>REGISTRAR</span></a>
                </li>
                <hr class="hr-2">
-               <li class="{{request()->route()->named('cadena_consultar') ? 'item-selected' : ''}}">
-                  <a href="/consultar-cadena" id="vista-cadena-consultar" class=""><i class="fas fa-book-open"></i><span>CONSULTAR</span></a>
+               <li class="{{request()->route()->named('cadenas.index') ? 'item-selected' : ''}}">
+                  <a href="{{route('cadenas.index')}}" id="vista-cadena-consultar" class=""><i class="fas fa-book-open"></i><span>CONSULTAR</span></a>
                </li>
             </ul>
          </div>

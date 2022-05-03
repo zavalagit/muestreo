@@ -44,8 +44,12 @@ Route::get('/',function(){
 
 
 #cadena
-Route::get('cadena-form/{formAccion}/{cadena?}','CadenaController@cadena_form')->name('cadena_form');
-Route::post('cadena-save/{formAccion}/{cadena?}','CadenaController@cadena_save')->name('cadena_save')->middleware('auth');
+Route::resource('cadenas', 'CadenaController');
+Route::get('cadena-pdf','CadenaController@cadena_pdf')->name('cadenas.pdf');
+Route::post('etiqueta-form/{cadena}','CadenaController@etiqueta_form')->name('etiquetas.form');
+Route::get('etiqueta-pdf/{cadena}','CadenaController@etiqueta_pdf')->name('etiquetas.pdf');
+// Route::get('cadena-form/{formAccion}/{cadena?}','CadenaController@cadena_form')->name('cadena_form');
+// Route::post('cadena-save/{formAccion}/{cadena?}','CadenaController@cadena_save')->name('cadena_save')->middleware('auth');
 #expediente
 Route::resource('expedientes', 'ExpedienteController');
 #proceso
@@ -60,6 +64,13 @@ Route::resource('pcrtrs', 'PCRTRController');
 #pcr
 Route::resource('pcrs','PCRController');
 
+#unidad
+Route::resource('unidades', 'UnidadController');
+Route::post('get-unidades','UnidadController@get_unidades')->name('unidades.get');
+
+#user
+Route::resource('users', 'UserController');
+Route::post('get-users','UnidadController@get_unidades')->name('users.get');
 
 // //Get_Tablas
 //    Route::post('get-especialidades','GetTablasController@get_especialidades');

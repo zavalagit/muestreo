@@ -8,31 +8,9 @@ use Auth;
 
 class Cadena extends Model
 {
-   protected $table = 'bodega.cadenas';
+   protected $table = 'cadenas';
 
-   protected $fillable = [
-      'bodega',
-      'nuc',
-      'folio',
-      'intervencion_lugar',
-      'intervencion_hora',
-      'intervencion_fecha',
-      'motivo',
-      'escrito',
-      'fotografico',
-      'croquis',
-      'otro',
-      'especifique',
-      'embalaje',
-      'traslado',
-      'trasladoCondiciones',
-      'trasladoRecomendaciones',
-      'estado',
-      'nota',
-      'observacion',
-      'unidad_id',
-      'user_id',
-   ];
+   protected $guarded = ['estado','user_id'];
 
    public function indicios(){
       return $this->hasMany('App\Indicio');

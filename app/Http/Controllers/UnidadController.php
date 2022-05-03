@@ -3,63 +3,93 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
+use App\Http\Controllers\Controller;
 use App\Unidad;
 
 class UnidadController extends Controller
 {
-	public function unidades(){
-		$unidades = Unidad::orderBy('nombre','asc')->get();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
 
-		return view('administrador.unidades.unidades',[
-			'unidades' => $unidades,
-		]);
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-	public function unidad_formulario($id_unidad = 0){
-		$unidad = "";
-		if($id_unidad){
-			$unidad = Unidad::find($id_unidad);
-		}
-		return view('administrador.unidades.unidad_formulario',
-			[
-				'unidad' => $unidad,
-				'unidad_bandera' => $id_unidad,
-			]	
-		);
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-	public function unidad_guardar(Request $request, $id_unidad = 0){
-		$mensajes = [
-			'nombre.required' => 'El campo "Nombre" es requerido.',
-			'coordinacion.required' => 'Hay que indicar si la nueva Unidad pertenece a la Coordinación de Servicios Periciales.',
-			'peticion.required' => 'Hay que indicar si la Unidad va a figurar en las Peticiones.',
-		];
-		$validator = Validator::make($request->all(), [
-			'nombre' => 'required',
-			'coordinacion' => 'required',
-			'peticion' => 'required',
-		 ], $mensajes);
-		 #Envia error de validacion
-		 if ($validator->fails()) {
-			 return response()->json([
-				 'satisfactorio' => false,
-				 'error' => $validator->errors()->all(),
-			 ]);
-		 }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-		if($id_unidad == 0)
-			$unidad = new Unidad;
-		else
-			$unidad = Unidad::find((int)$id_unidad);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-		$unidad->nombre = $request->nombre;
-		$unidad->coordinacion = $request->coordinacion;
-		$unidad->peticion = $request->peticion;
-		$unidad->save();
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-		return response()->json([
-         'satisfactorio' => true,
-      ]);
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function get_unidades(Request $request){
+        $unidades = Unidad::where('nombre','like','%'.$request->buscar.'%')->orderBy('nombre', 'asc')->get();
+        return response()->json(
+            [
+                'registros' => $unidades,
+            ]
+        );
+    }
 }
