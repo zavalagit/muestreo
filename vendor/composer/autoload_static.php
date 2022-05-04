@@ -535,6 +535,7 @@ class ComposerStaticInit0ec98b3e5f2a3ac92802ecabc6f3b3be
         'App\\Cargo' => __DIR__ . '/../..' . '/app/Cargo.php',
         'App\\Categoria' => __DIR__ . '/../..' . '/app/Categoria.php',
         'App\\Cedula' => __DIR__ . '/../..' . '/app/Cedula.php',
+        'App\\Cim' => __DIR__ . '/../..' . '/app/Cim.php',
         'App\\Codificacion' => __DIR__ . '/../..' . '/app/Codificacion.php',
         'App\\Colectivo' => __DIR__ . '/../..' . '/app/Colectivo.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',

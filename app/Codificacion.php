@@ -9,6 +9,7 @@ class Codificacion extends Model
     protected $table = 'bodega.codificaciones';
 
     protected $fillable = [
+        'proceso_id', //relacion de la tabla procesos
         'perito_id', //perito que realiza el registro
         'supervisor_id', //supermisor que autoriza su registro
         'bitacora', //nombre de libro de bitacora
@@ -17,6 +18,10 @@ class Codificacion extends Model
         'hora_inicio',
         'fecha_inicio'
     ];
+    public function proceso(){
+        return $this->belongsTo('App\Proceso','proceso_id');
+     }
+
 
     public function perito(){
         return $this->belongsTo('App\User','perito_id');

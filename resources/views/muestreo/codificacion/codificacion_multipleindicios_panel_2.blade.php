@@ -1,4 +1,11 @@
 <div class="row">
+
+   @include('muestreo.codificacion.expediente_proceso_datos')
+
+   <div class="col s12">
+      <hr class="hr-main">
+   </div>
+
    @include('muestreo.codificacion.codificacion_datos')
    
    <div class="col s12">

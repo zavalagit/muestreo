@@ -14,6 +14,7 @@ return array(
     'App\\Cargo' => $baseDir . '/app/Cargo.php',
     'App\\Categoria' => $baseDir . '/app/Categoria.php',
     'App\\Cedula' => $baseDir . '/app/Cedula.php',
+    'App\\Cim' => $baseDir . '/app/Cim.php',
     'App\\Codificacion' => $baseDir . '/app/Codificacion.php',
     'App\\Colectivo' => $baseDir . '/app/Colectivo.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',

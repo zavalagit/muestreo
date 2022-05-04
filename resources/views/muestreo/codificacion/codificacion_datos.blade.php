@@ -1,6 +1,6 @@
 {{-- <div class="row"> --}}
    <div class="col s12 div-fieldset">
-      <fieldset>
+      <fieldset class="fieldset-subseccion">
          <legend>2. Datos del Formuarion de Codificacion</legend>
          <!--hora registro de codificacion-->
          <div class="row">

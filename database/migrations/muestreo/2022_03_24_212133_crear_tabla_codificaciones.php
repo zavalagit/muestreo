@@ -16,6 +16,10 @@ class CrearTablaCodificaciones extends Migration
         Schema::create('bodega.codificaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            //proceso al que esta relacionado
+            $table->bigInteger('proceso_id')->unsigned()->nullable();
+            $table->foreign('proceso_id')->references('id')->on('bodega.procesos');
+
             //Responsable del perito que registra
             $table->bigInteger('perito_id')->unsigned();
             $table->foreign('perito_id')->references('id')->on('bodega.users');
