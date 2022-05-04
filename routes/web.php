@@ -1145,9 +1145,13 @@ Auth::routes();
 // Route::get('codificacion-multipleindicios-form/{formAccion}/{cadenas}','Muestra\CodificacionController@codificacion_multipleindicios_form')->name('codificacion_multipleindicios_form');
 
 
+//***Route::post('codificacion_save/{formAccion}/{codificacion?}','Muestra\CodificacionController@codificacion_save')->name('codificacion_save');
 
+// Route::post('prestamo-save/{formAccion}/{prestamo?}','PrestamoController@prestamo_save')->name('prestamo_save');
 
+Route::resource('muestras', Muestra\MuestraController::class);
 
+Route::resource('codificacion', Muestra\CodificacionController::class);
 
 
 

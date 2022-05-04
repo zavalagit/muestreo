@@ -16,9 +16,6 @@ class CrearTablaCodificacionIndicio extends Migration
         Schema::create('codificacion_indicio', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            //codigo o cim de laboratorio
-            $table->string('codigo')->nullable();
-
             #codificacion _id
             $table->bigInteger('codificacion_id')->unsigned();
             $table->foreign('codificacion_id')->references('id')->on('bodega.codificaciones');
@@ -27,12 +24,16 @@ class CrearTablaCodificacionIndicio extends Migration
             $table->bigInteger('indicio_id')->unsigned();
             $table->foreign('indicio_id')->references('id')->on('bodega.indicios');
 
+            //id de la cadena
+            $table->bigInteger('cadena_id')->unsigned();//id de la cadena para hacer busquedas por folio
+            $table->foreign('cadena_id')->references('id')->on('bodega.cadenas');
+
+            //cantidad de indicios
+            $table->bigInteger('codificacion_cantidad_indicios')->unsigned()->nullable();
+
             //descripcion del indicio
             $table->longText('descripcion')->nullable();
             
-            //observacion
-            $table->longText('observaciones')->nullable();
-
             $table->timestamps();
         });
     }

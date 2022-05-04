@@ -6,7 +6,7 @@
    </div>
    <!--Boton prestamo-->
    <div class="col s12 m4 l1 offset-m8 offset-l11">
-      <button type="submit" class="btn-guardar" id="btn-prestar" style="display: inline-block !important; width:100%;" name="btn_prestamo" value="prestamo">
+      <button form="form-codificacion-registro" type="submit" class="btn-guardar" id="btn-registrar" style="display: inline-block !important; width:100%;" name="btn_registrar" value="registrar">
          {{$formAccion}}
       </button>
    </div>

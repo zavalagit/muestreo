@@ -24,7 +24,7 @@ class CrearTablaCodificaciones extends Migration
             $table->bigInteger('supervisor_id')->unsigned();
             $table->foreign('supervisor_id')->references('id')->on('bodega.users');
 
-            
+                                    
             //nombre de la bitacora
             $table->string('bitacora')->nullable();
             
@@ -40,6 +40,9 @@ class CrearTablaCodificaciones extends Migration
             //fecha del gegistro
             $table->date('fecha_inicio')->nullable();
 
+            //observacion
+            $table->longText('observaciones')->nullable();
+
             $table->timestamps();
         });
     }
@@ -51,6 +54,6 @@ class CrearTablaCodificaciones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codificaciones');
+        Schema::dropIfExists('bodega.codificaciones');
     }
 }
