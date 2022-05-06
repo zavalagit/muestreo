@@ -1,7 +1,7 @@
 {{-- <div class="row"> --}}
    <div class="col s12 div-fieldset">
       <fieldset>
-         <legend>2. Datos del Formuarion de Codificacion</legend>
+         <legend>2. Expediente</legend>
          <!--hora registro de codificacion-->
          <div class="row">
             <div class="input-field col s12 m6 l4">

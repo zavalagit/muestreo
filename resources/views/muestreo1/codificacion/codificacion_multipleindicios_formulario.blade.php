@@ -1,5 +1,5 @@
 {{-- {{dd('vista')}} --}}
-@extends('plantillas.plantilla_sin_menu')
+@extends('template.template')
 
 @section('css')
    <link rel="stylesheet" href="{{asset('css/colores.css')}}">
@@ -8,36 +8,33 @@
    <link rel="stylesheet" href="{{asset('css/materialize/carousel_panel.css')}}">
 @endsection
 
-@section('titulo')
-   FORMULARIO DE CODIFICACION
+@section('tittle','FORMULARIO DE CODIFICACION')
+
+{{-- @section('seccion', 'REGISTRAR CODIFICACION prueba rama') --}}
+
+@section('header')
+    
 @endsection
-@section('seccion', 'REGISTRAR CODIFICACION prueba rama')
 
+@section('main')
 
-@section('contenido')
+<div class="row" style="margin-top: 20px;">
 
-<div class="row">
-   
-      
       @component('componentes.componente_carousel')
          <!--panel-1-->
          @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
-   <form class="col s12" autocomplete="off" id="form-codificacion-busqueda" action="{{route('codificacion.create')}}">
-     
-         @include('muestreo.codificacion.indicios_buscador')
-   </form>
-   <form class="col s12" id="form-codificacion-registro" action="{{route('codificacion.store')}}" method="POST">
-      {{ csrf_field() }}      
-         @include('muestreo.codificacion.codificacion_multipleindicios_panel_1')
+            @include('codificacion.create_buscador')
+            <form class="col s12" id="form-codificacion-registro" action="{{route('codificaciones.store')}}" method="POST">
+               {{ csrf_field() }}      
+               @include('muestreo1.codificacion.codificacion_multipleindicios_panel_1')
          @endcomponent
          <!--panel-2-->
          @component('componentes.componente_carousel_panel',['previo' => true, 'siguiente' => false])
-            @include('muestreo.codificacion.codificacion_multipleindicios_panel_2')
+            @include('muestreo1.codificacion.codificacion_multipleindicios_panel_2')
+            </form>      
          @endcomponent
-   </form>      
       @endcomponent
 
-   
 </div>
 
 

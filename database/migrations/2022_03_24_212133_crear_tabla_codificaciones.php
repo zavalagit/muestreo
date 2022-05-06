@@ -15,33 +15,18 @@ class CrearTablaCodificaciones extends Migration
     {
         Schema::create('bodega.codificaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            //Responsable del perito que registra
-            $table->bigInteger('perito_id')->unsigned();
-            $table->foreign('perito_id')->references('id')->on('bodega.users');
-
-            //Responsable del quimico que supervisa
-            $table->bigInteger('supervisor_id')->unsigned();
-            $table->foreign('supervisor_id')->references('id')->on('bodega.users');
-
-                                    
             //nombre de la bitacora
             $table->string('bitacora')->nullable();
-            
-            //numero de libro
             $table->bigInteger('numero_libro')->nullable();
-
-            //folio interno
-            $table->string('folio_interno')->nullable();
-            
-            //hora de inicio del registro
             $table->time('hora_inicio')->nullable();
-
-            //fecha del gegistro
             $table->date('fecha_inicio')->nullable();
-
-            //observacion
             $table->longText('observaciones')->nullable();
+            #user1_id - usuario que realiza el proceso
+            $table->bigInteger('user1_id')->unsigned();
+            $table->foreign('user1_id')->references('id')->on('users');
+            #user2_id - usuario que supervisa
+            $table->bigInteger('user2_id')->unsigned();
+            $table->foreign('user2_id')->references('id')->on('users');
 
             $table->timestamps();
         });

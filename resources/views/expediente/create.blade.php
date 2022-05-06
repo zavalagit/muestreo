@@ -1,101 +1,81 @@
+{{-- {{dd('vista')}} --}}
 @extends('template.template')
 
 @section('css')
-{{-- <link rel="stylesheet" href="{{asset('css/cadenas/registrar.css')}}"> --}}
-<link rel="stylesheet" href="{{asset('css/form/form.css')}}">
-
-<style>
-    table{
-        border: 1px solid;
-    }
-    th{
-        
-    }
-    td{
-        border: 1px solid;
-    }
-</style>
+   <link rel="stylesheet" href="{{asset('css/colores.css')}}">
+   <link rel="stylesheet" href="{{asset('css/table.css')}}">
+   <link rel="stylesheet" href="{{asset('css/form/form.css')}}">
+   <link rel="stylesheet" href="{{asset('css/materialize/carousel_panel.css')}}">
 @endsection
 
-@section('title','Expediente Create')
+@section('tittle','FORMULARIO DE CODIFICACION')
+
+{{-- @section('seccion', 'REGISTRAR CODIFICACION prueba rama') --}}
+
+@section('header')
+    
+@endsection
 
 @section('main')
-<section>
-    <div class="row" style="margin: 0 !important; line-height: 0 !important">
-        <div class="col s12 m12 l12">
-            <p class="right-align">
-                <i class="fas fa-asterisk" style="color: tomato;"></i> <b>Campos obligatorios</b>
-            </p>
-            {{-- @if ( $formAccion == 'editar' )
-                <p class="right-align">
-                    <i class="fas fa-asterisk" style="color: green;"></i> <b>Campos que puede modificar</b>
-                </p>   
-            @endif --}}
-        </div>
-    </div>    
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <hr class="hr-4">
-        </div>
-    </div>        
-</section>
 
+<div class="row" style="margin-top: 20px;">
 
-{{-- <section id="btn-nuevo-registro" class="ocultar">
-    <div class="row">
-        <div class="col s12 m12 l11">
-            <p class="right-align" style="color: tomato;"><b>Si desea realizar un <u>nuevo registro</u> de clic en el boton</b></p>
-        </div>
-        <div class="col s12 m12 l1">                    
-            <a href="{{route('peticion_form',['formAccion' => 'registrar'])}}" class="btn-guardar">N. REGISTRO</a>
-        </div>
-        <div class="col s12">
-            <hr class="hr-2">
-        </div>
-    </div>
-</section> --}}
+      @component('componentes.componente_carousel')
+         <!--panel-1-->
+         @component('componentes.componente_carousel_panel',['previo' => false, 'siguiente' => true])
+            @include('codificacion.create_buscador')
+            <form class="col s12" id="form-codificacion-registro" action="{{route('codificaciones.store')}}" method="POST">
+               {{ csrf_field() }}      
+               @include('muestreo1.codificacion.codificacion_multipleindicios_panel_1')
+         @endcomponent
+         <!--panel-2-->
+         @component('componentes.componente_carousel_panel',['previo' => true, 'siguiente' => false])
+            @include('muestreo1.codificacion.codificacion_multipleindicios_panel_2')
+            </form>      
+         @endcomponent
+      @endcomponent
 
-<div class="row">
-   <form class="col s12" id="form-peticion" autocomplete="off" method="POST" action="{{route('expedientes.store')}}">
-        {{ csrf_field() }}   
-        
-        <div class="row">
-            <div class="input-field col s12 l3">
-                <input type="text" id="folio" name="folio">
-                <label for="folio">FOLIO</label>
-            </div>
-            <div class="input-field col s12 l3">
-                <input type="text" id="nuc" name="nuc">
-                <label for="nuc">N.U.C.</label>
-            </div>
-            {{-- <div class="input-field col s12 l3">
-                <input type="time" id="hora" name="hora">
-                <label class="active" for="hora">HORA</label>
-            </div>
-            <div class="input-field col s12 l3">
-                <input type="date" id="fecha" name="fecha">
-                <label class="active" for="fecha">FECHA</label>
-            </div> --}}
-            <div class="input-field col s12 l3">
-                <select name="tipo">
-                  <option value="" disabled selected>Indique el tipo de expediente</option>
-                  <option value="identificacion">1. Identificación</option>
-                  <option value="investigacion">2. Investigación</option>                  
-                </select>
-                <label>Tipo de Expediente</label>
-              </div>
-            
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l2 offset-l10">
-                <button type="submit" class="btn-guardar">Guardar</button>
-            </div>
-        </div>
-
-    </form>    
 </div>
+
+
 @endsection
 
 @section('js')
-<script src="{{asset('js/autocomplete/autocomplete.js')}}"></script>
+
+<script>
+   $(function(){
+      $('.carousel').carousel({
+         noWrap: true,
+      });
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+      $('.adelante').click(function(e){
+         e.preventDefault();
+         $('.carousel').carousel('next');
+      })
+      $('.atras').click(function(e){
+         e.preventDefault();
+         $('.carousel').carousel('prev');
+      })
+   });
+</script>
+
+
+
+
+{{-- <script src="{{asset('js/entrada/cadena_accion.js')}}" charset="utf-8"></script> --}}
+<script src="{{asset('js/codificacion/get_modelo.js')}}"></script>
+<script src="{{asset('js/codificacion/codificacion_form.js')}}"></script>
+{{--agrega campo de nuc para su busqueda --}}
+<script src="{{asset('js/codificacion/datos_busqueda_indicios.js')}}"></script>
+{{--selecionar el checkbox del indicio --}}
+<script src="{{asset('js/codificacion/select_checkbox.js')}}"></script>
+
+   
+   {{-- <script src="{{asset('js/cadenas/cadena_estado.js')}}"></script> --}}
+  
+   <script src="{{asset('js/general/hora_fecha_actual.js')}}"></script>
+
+   
+
 @endsection

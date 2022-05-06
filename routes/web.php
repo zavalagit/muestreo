@@ -1151,7 +1151,7 @@ Auth::routes();
 
 Route::resource('muestras', Muestra\MuestraController::class);
 
-Route::resource('codificacion', Muestra\CodificacionController::class);
+Route::resource('codificaciones', Muestra\CodificacionController::class);
 
 
 

@@ -15,23 +15,17 @@ class CrearTablaCims extends Migration
     {
         Schema::create('bodega.cims', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             //año del registro
-            $table->Integer('year');
-
+            $table->integer('year');
             //ultimo cim numero consecutivo/año de registro
-            $table->bigInteger('cim');
-
-            //ultimo usuario que registra cim
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('bodega.users');
-
+            $table->bigInteger('consecutivo');
             //indicios ultimo indcio que realacionas el cim
-            $table->bigInteger('indicio_id')->unsigned();
+            $table->bigInteger('indicio_id')->unsigned()->nullable();
             $table->foreign('indicio_id')->references('id')->on('bodega.indicios');
-
+            //ultimo usuario que registra cim
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('bodega.users');
             
-
             $table->timestamps();
         });
     }
