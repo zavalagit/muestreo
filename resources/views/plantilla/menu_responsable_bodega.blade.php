@@ -14,7 +14,7 @@
    {{-- <li class="item-menu"> <hr class="hr-2"> </li> --}}
 
 
-   <li id="li-prestamos" class="item-menu"><a href="{{route('prestamo_consultar')}}"><i class="fa fa-arrow-circle-left"></i><span>PRESTAMOS</span></a></li>
+   {{--  <li id="li-prestamos" class="item-menu"><a href="{{route('prestamo_consultar')}}"><i class="fa fa-arrow-circle-left"></i><span>PRESTAMOS</span></a></li>  --}}
 
    {{-- <li class="item-menu"> <hr class="hr-2"> </li> --}}
 

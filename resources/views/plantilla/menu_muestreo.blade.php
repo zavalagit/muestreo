@@ -7,7 +7,7 @@
             <a href="{{route('muestras.index')}}" id="vista-muestra-inicio"><i class="fas fa-pen"></i><span>PRINCIPIO</span></a>
          </div>
          <div class="menu-body collapsible-body">
-            <a href="{{route('codificacion.index')}}" id="vista-codificacion"><i class="fas fa-file-alt"></i><span>CODIFICACION</span></a>
+            {{--  <a href="{{route('codificacion.index')}}" id="vista-codificacion"><i class="fas fa-file-alt"></i><span>CODIFICACION</span></a>  --}}
          </div>
       </li>
    </ul>
