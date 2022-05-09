@@ -72,6 +72,9 @@ Route::post('get-unidades','UnidadController@get_unidades')->name('unidades.get'
 Route::resource('users', 'UserController');
 Route::post('get-users','UnidadController@get_unidades')->name('users.get');
 
+#conformación de segmentos anatomicos
+Route::resource('anatomicos', 'AnatomiaController');
+
 // //Get_Tablas
 //    Route::post('get-especialidades','GetTablasController@get_especialidades');
 //    // Route::post('get-unidades','GetTablasController@get_unidades');
